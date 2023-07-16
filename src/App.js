@@ -1,25 +1,31 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import Person from './Components/Person';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component{
+  
+state={
+      person : { 
+        fullName : "e36",
+        bio : "drift car", 
+        imgSrc : "https://i0.wp.com/livetooffend.com/wp-content/uploads/e36n-6.jpg?fit=1000%2C1143&ssl=1",
+        profession : "Student at GOMYCODE"
+      },
+      show : false
+    }
+  
+  render(){
+    return(
+      <div>
+        <h1>dream car</h1>
+        <button onClick={()=> this.setState({show : !this.state.show})}>{this.state.show ? 'Hide' : 'Show'}</button>
+        {
+          this.state.show &&  <Person person={this.state.person}/>
+        }
+        
+      </div>
+    )
+  }
 }
 
 export default App;
